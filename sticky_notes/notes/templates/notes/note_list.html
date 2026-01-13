@@ -1,0 +1,21 @@
+{% extends "notes/base.html" %}
+
+{% block content %}
+
+<a class="btn btn-primary mb-3" href="{% url 'note_create' %}">
+    Create new note
+</a>
+
+<ul class="list-group">
+    {% for note in notes %}
+        <li class="list-group-item">
+            <a href="{% url 'note_detail' note.pk %}">
+                {{ note.title }}
+            </a>
+        </li>
+    {% empty %}
+        <li class="list-group-item">No notes yet.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
